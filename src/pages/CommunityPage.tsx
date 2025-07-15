@@ -91,14 +91,14 @@ const CommunityPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen geometric-bg">
       <div className="container mx-auto px-4 py-12 space-y-16">
         {/* Modern Header */}
         <div className="text-center space-y-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 gradient-wellness rounded-2xl shadow-medium mb-6">
-            <Users className="w-10 h-10 text-white" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-foreground rounded-3xl shadow-medium mb-6">
+            <Users className="w-10 h-10 text-background" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold gradient-wellness bg-clip-text text-transparent leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
             Wellness Community
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -108,23 +108,23 @@ const CommunityPage = () => {
 
         {/* Modern Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="glass-modern rounded-3xl p-8 text-center hover-lift group">
-            <div className="w-16 h-16 gradient-wellness rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Users className="w-8 h-8 text-white" />
+          <div className="modern-card-elevated rounded-3xl p-8 text-center hover-lift group">
+            <div className="w-16 h-16 bg-foreground rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Users className="w-8 h-8 text-background" />
             </div>
             <h3 className="text-3xl font-bold text-foreground mb-2">{communityGroups.length}</h3>
             <p className="text-muted-foreground font-medium">Active Communities</p>
           </div>
-          <div className="glass-modern rounded-3xl p-8 text-center hover-lift group">
-            <div className="w-16 h-16 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Star className="w-8 h-8 text-white" />
+          <div className="modern-card-elevated rounded-3xl p-8 text-center hover-lift group">
+            <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Star className="w-8 h-8 text-accent-foreground" />
             </div>
             <h3 className="text-3xl font-bold text-foreground mb-2">4.8</h3>
             <p className="text-muted-foreground font-medium">Average Rating</p>
           </div>
-          <div className="glass-modern rounded-3xl p-8 text-center hover-lift group">
-            <div className="w-16 h-16 gradient-wellness rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <TrendingUp className="w-8 h-8 text-white" />
+          <div className="modern-card-elevated rounded-3xl p-8 text-center hover-lift group">
+            <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <TrendingUp className="w-8 h-8 text-secondary-foreground" />
             </div>
             <h3 className="text-3xl font-bold text-foreground mb-2">92%</h3>
             <p className="text-muted-foreground font-medium">Success Rate</p>
@@ -140,8 +140,8 @@ const CommunityPage = () => {
             </div>
             {isLoadingJoined ? (
               <div className="text-center py-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 gradient-wellness rounded-2xl animate-pulse mb-4">
-                  <Users className="w-8 h-8 text-white" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-muted rounded-2xl animate-pulse mb-4">
+                  <Users className="w-8 h-8 text-muted-foreground" />
                 </div>
                 <p className="text-muted-foreground">Loading your communities...</p>
               </div>
@@ -150,9 +150,9 @@ const CommunityPage = () => {
                 <div className="text-destructive">Failed to load your communities.</div>
               </div>
             ) : joinedCommunities.length === 0 ? (
-              <div className="text-center py-12 glass-modern rounded-3xl">
-                <div className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-10 h-10 text-white" />
+              <div className="text-center py-12 modern-card-elevated rounded-3xl">
+                <div className="w-20 h-20 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-10 h-10 text-accent-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">Start Your Journey</h3>
                 <p className="text-muted-foreground">You haven't joined any communities yet. Explore below to get started!</p>
@@ -160,10 +160,10 @@ const CommunityPage = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {joinedCommunities.map((group) => (
-                  <div key={group.id} className="glass-modern rounded-3xl p-6 hover-lift group">
+                  <div key={group.id} className="modern-card-elevated rounded-3xl p-6 hover-lift hover-scale group">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 gradient-wellness rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Users className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-foreground rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Users className="w-6 h-6 text-background" />
                       </div>
                       <span className="text-sm text-muted-foreground font-medium">{group.joinedUsersCount || 0} members</span>
                     </div>
@@ -196,7 +196,7 @@ const CommunityPage = () => {
                 placeholder="Search communities by name or interest..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 pr-4 py-4 text-lg rounded-2xl border-2 bg-card shadow-soft focus:shadow-medium transition-all duration-300"
+                className="pl-12 pr-4 py-4 text-lg rounded-2xl border-2 modern-card focus:border-foreground transition-all duration-300"
               />
             </div>
           </div>
@@ -205,13 +205,13 @@ const CommunityPage = () => {
         {/* Community Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {paginatedGroups.map((group) => (
-            <div key={group.id} className="glass-modern rounded-3xl p-6 hover-lift group">
+            <div key={group.id} className="modern-card-elevated rounded-3xl p-6 hover-lift hover-scale group">
               <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 gradient-wellness rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Users className="w-7 h-7 text-white" />
+                <div className="w-14 h-14 bg-foreground rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-7 h-7 text-background" />
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-medium text-muted-foreground">{group.joinedUsersCount || 0}</span>
+                  <span className="text-sm font-medium text-foreground">{group.joinedUsersCount || 0}</span>
                   <p className="text-xs text-muted-foreground">members</p>
                 </div>
               </div>
@@ -230,7 +230,7 @@ const CommunityPage = () => {
                 {!joinedCommunityIds.has(group.id) && (
                   <Button
                     onClick={() => handleJoinGroup(group.id)}
-                    className="flex-1 gradient-wellness text-white rounded-xl font-semibold hover:shadow-medium transition-all duration-300 transform hover:scale-105"
+                    className="flex-1 bg-foreground text-background rounded-xl font-semibold hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-105"
                   >
                     Join Now
                   </Button>
@@ -265,7 +265,7 @@ const CommunityPage = () => {
                     variant={page === 1 ? 'default' : 'outline'}
                     className={`w-12 h-12 rounded-xl border-2 font-semibold transition-all duration-300 ${
                       page === 1 
-                        ? 'gradient-wellness text-white shadow-medium' 
+                        ? 'bg-foreground text-background border-foreground' 
                         : 'hover:bg-accent'
                     }`}
                     onClick={() => setPage(1)}
@@ -288,7 +288,7 @@ const CommunityPage = () => {
                         variant={page === i ? 'default' : 'outline'}
                         className={`w-12 h-12 rounded-xl border-2 font-semibold transition-all duration-300 ${
                           page === i 
-                            ? 'gradient-wellness text-white shadow-medium' 
+                            ? 'bg-foreground text-background border-foreground' 
                             : 'hover:bg-accent'
                         }`}
                         onClick={() => setPage(i)}
@@ -313,7 +313,7 @@ const CommunityPage = () => {
                       variant={page === totalPages ? 'default' : 'outline'}
                       className={`w-12 h-12 rounded-xl border-2 font-semibold transition-all duration-300 ${
                         page === totalPages 
-                          ? 'gradient-wellness text-white shadow-medium' 
+                          ? 'bg-foreground text-background border-foreground' 
                           : 'hover:bg-accent'
                       }`}
                       onClick={() => setPage(totalPages)}
