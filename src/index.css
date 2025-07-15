@@ -79,17 +79,62 @@
   }
 }
 
-/* Custom gradient backgrounds */
-.gradient-bg {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+/* Modern wellness theme with elegant gradients */
+:root {
+  /* Wellness color palette */
+  --wellness-primary: 142 71% 45%;     /* sage green */
+  --wellness-secondary: 200 95% 65%;   /* sky blue */
+  --wellness-accent: 280 60% 70%;      /* soft purple */
+  --wellness-warm: 35 85% 75%;         /* warm peach */
+  
+  /* Gradients for modern appeal */
+  --gradient-wellness: linear-gradient(135deg, hsl(var(--wellness-primary)) 0%, hsl(var(--wellness-secondary)) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(var(--wellness-accent)) 0%, hsl(var(--wellness-warm)) 100%);
+  --gradient-subtle: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
+  
+  /* Modern shadows */
+  --shadow-soft: 0 4px 20px -2px hsl(var(--wellness-primary) / 0.1);
+  --shadow-medium: 0 8px 30px -4px hsl(var(--wellness-primary) / 0.15);
+  --shadow-strong: 0 12px 40px -6px hsl(var(--wellness-primary) / 0.2);
 }
 
-.gradient-dark {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+/* Utility classes for modern design */
+.gradient-wellness {
+  background: var(--gradient-wellness);
 }
 
-.glass-effect {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.gradient-subtle {
+  background: var(--gradient-subtle);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-medium {
+  box-shadow: var(--shadow-medium);
+}
+
+.shadow-strong {
+  box-shadow: var(--shadow-strong);
+}
+
+.glass-modern {
+  backdrop-filter: blur(16px) saturate(180%);
+  background: hsl(var(--card) / 0.8);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+/* Animation utilities */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
 }

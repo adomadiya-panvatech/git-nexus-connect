@@ -91,189 +91,249 @@ const CommunityPage = () => {
   }
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Wellness Community</h1>
-        <p className="text-xl text-gray-600">Connect, share, and grow together on your wellness journey</p>
-      </div>
+    <div className="min-h-screen bg-gradient-subtle">
+      <div className="container mx-auto px-4 py-12 space-y-16">
+        {/* Modern Header */}
+        <div className="text-center space-y-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 gradient-wellness rounded-2xl shadow-medium mb-6">
+            <Users className="w-10 h-10 text-white" />
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold gradient-wellness bg-clip-text text-transparent leading-tight">
+            Wellness Community
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Connect, share, and grow together on your wellness journey. Join like-minded individuals creating positive change.
+          </p>
+        </div>
 
-      {/* Stats Cards */}
-      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white border border-gray-200 rounded-2xl shadow p-6 text-center">
-          <Users className="w-8 h-8 mx-auto mb-2 text-black" />
-          <h3 className="text-2xl font-bold text-black">{communityGroups.length}</h3>
-          <p className="text-gray-700">Active Communities</p>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-2xl shadow p-6 text-center">
-          <Star className="w-8 h-8 mx-auto mb-2 text-yellow-500" />
-          <h3 className="text-2xl font-bold text-black">4.8</h3>
-          <p className="text-gray-700">Average Rating</p>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-2xl shadow p-6 text-center">
-          <TrendingUp className="w-8 h-8 mx-auto mb-2 text-green-500" />
-          <h3 className="text-2xl font-bold text-black">92%</h3>
-          <p className="text-gray-700">Success Rate</p>
-        </div>
-      </div>
-
-      {/* Your Joined Communities Section */}
-      {userId && (
-        <div className="mx-auto mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-black">Your Joined Communities</h2>
-          {isLoadingJoined ? (
-            <div className="text-center py-8 text-gray-500">Loading your joined communities...</div>
-          ) : errorJoined ? (
-            <div className="text-center py-8 text-red-500">Failed to load joined communities.</div>
-          ) : joinedCommunities.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">You haven't joined any communities yet.</div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {joinedCommunities.map((group) => (
-                <div key={group.id} className="bg-white border border-gray-200 rounded-2xl shadow p-6 flex flex-col">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="w-10 h-10 bg-[#e9d5ff] rounded-xl flex items-center justify-center">
-                      <Users className="w-6 h-6 text-purple-500" />
-                    </div>
-                    <span className="text-xs text-gray-500">{group.joinedUsersCount || 0} members</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-black mb-1">{group.name}</h3>
-                    <p className="text-gray-700 text-sm mb-4">{group.description || 'A great wellness community.'}</p>
-                  </div>
-                  <Link to={`/community/${group.id}`} className="w-full block mt-auto">
-                    <Button variant="outline" className="w-full border border-gray-300 text-black rounded-lg font-semibold hover:bg-gray-100 transition">
-                      View Details
-                    </Button>
-                  </Link>
-                </div>
-              ))}
+        {/* Modern Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="glass-modern rounded-3xl p-8 text-center hover-lift group">
+            <div className="w-16 h-16 gradient-wellness rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Users className="w-8 h-8 text-white" />
             </div>
-          )}
+            <h3 className="text-3xl font-bold text-foreground mb-2">{communityGroups.length}</h3>
+            <p className="text-muted-foreground font-medium">Active Communities</p>
+          </div>
+          <div className="glass-modern rounded-3xl p-8 text-center hover-lift group">
+            <div className="w-16 h-16 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Star className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-3xl font-bold text-foreground mb-2">4.8</h3>
+            <p className="text-muted-foreground font-medium">Average Rating</p>
+          </div>
+          <div className="glass-modern rounded-3xl p-8 text-center hover-lift group">
+            <div className="w-16 h-16 gradient-wellness rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <TrendingUp className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-3xl font-bold text-foreground mb-2">92%</h3>
+            <p className="text-muted-foreground font-medium">Success Rate</p>
+          </div>
         </div>
-      )}
 
-      {/* Search Bar and Join Our Communities Title in one row */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full mb-8 gap-4">
-        <h2 className="text-2xl font-bold text-black flex-shrink-0 mb-0">Join Our Communities</h2>
-        <div className="relative w-full md:max-w-xl">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <Input
-            placeholder="Search communities..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-12 pr-4 py-3 w-full border border-gray-300 rounded-lg text-black bg-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
-          />
-        </div>
-      </div>
-
-      {/* Join Our Communities Section */}
-      <div className="mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {paginatedGroups.map((group) => (
-            <div key={group.id} className="bg-white border border-gray-200 rounded-2xl shadow p-6 flex flex-col">
-              <div className="flex items-center justify-between mb-2">
-                <div className="w-10 h-10 bg-[#e9d5ff] rounded-xl flex items-center justify-center">
-                  <Users className="w-6 h-6 text-purple-500" />
+        {/* Your Joined Communities Section */}
+        {userId && (
+          <div className="space-y-8">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-foreground mb-4">Your Wellness Journey</h2>
+              <p className="text-muted-foreground">Communities you're part of</p>
+            </div>
+            {isLoadingJoined ? (
+              <div className="text-center py-12">
+                <div className="inline-flex items-center justify-center w-16 h-16 gradient-wellness rounded-2xl animate-pulse mb-4">
+                  <Users className="w-8 h-8 text-white" />
                 </div>
-                <span className="text-xs text-gray-500">{group.joinedUsersCount || 0} members</span>
+                <p className="text-muted-foreground">Loading your communities...</p>
               </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-black mb-1">{group.name}</h3>
-                <p className="text-gray-700 text-sm mb-4">{group.description || 'Join this amazing community to connect with like-minded wellness enthusiasts.'}</p>
+            ) : errorJoined ? (
+              <div className="text-center py-12">
+                <div className="text-destructive">Failed to load your communities.</div>
               </div>
-              <div className="flex space-x-2 mt-auto">
+            ) : joinedCommunities.length === 0 ? (
+              <div className="text-center py-12 glass-modern rounded-3xl">
+                <div className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-2">Start Your Journey</h3>
+                <p className="text-muted-foreground">You haven't joined any communities yet. Explore below to get started!</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {joinedCommunities.map((group) => (
+                  <div key={group.id} className="glass-modern rounded-3xl p-6 hover-lift group">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 gradient-wellness rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+                      <span className="text-sm text-muted-foreground font-medium">{group.joinedUsersCount || 0} members</span>
+                    </div>
+                    <div className="flex-1 mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">{group.name}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{group.description || 'A thriving wellness community.'}</p>
+                    </div>
+                    <Link to={`/community/${group.id}`} className="block">
+                      <Button variant="outline" className="w-full border-2 rounded-xl font-semibold hover:bg-accent transition-all duration-300">
+                        View Community
+                      </Button>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Search and Discover Section */}
+        <div className="text-center space-y-8">
+          <div>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Discover Communities</h2>
+            <p className="text-muted-foreground">Find your perfect wellness community</p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+              <Input
+                placeholder="Search communities by name or interest..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-12 pr-4 py-4 text-lg rounded-2xl border-2 bg-card shadow-soft focus:shadow-medium transition-all duration-300"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Community Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {paginatedGroups.map((group) => (
+            <div key={group.id} className="glass-modern rounded-3xl p-6 hover-lift group">
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-14 h-14 gradient-wellness rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-7 h-7 text-white" />
+                </div>
+                <div className="text-right">
+                  <span className="text-sm font-medium text-muted-foreground">{group.joinedUsersCount || 0}</span>
+                  <p className="text-xs text-muted-foreground">members</p>
+                </div>
+              </div>
+              <div className="flex-1 mb-6">
+                <h3 className="text-xl font-bold text-foreground mb-3 leading-tight">{group.name}</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  {group.description || 'Join this amazing community to connect with like-minded wellness enthusiasts.'}
+                </p>
+              </div>
+              <div className="flex gap-3">
                 <Link to={`/community/${group.id}`} className="flex-1">
-                  <Button variant="outline" className="w-full border border-gray-300 text-black rounded-lg font-semibold hover:bg-gray-100 transition">
-                    View Details
+                  <Button variant="outline" className="w-full border-2 rounded-xl font-semibold hover:bg-accent transition-all duration-300">
+                    Explore
                   </Button>
                 </Link>
                 {!joinedCommunityIds.has(group.id) && (
                   <Button
                     onClick={() => handleJoinGroup(group.id)}
-                    className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition"
+                    className="flex-1 gradient-wellness text-white rounded-xl font-semibold hover:shadow-medium transition-all duration-300 transform hover:scale-105"
                   >
-                    Join
+                    Join Now
                   </Button>
                 )}
               </div>
             </div>
           ))}
         </div>
-        {/* Pagination Controls */}
+        {/* Modern Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center mt-8 gap-2">
+          <div className="flex justify-center items-center gap-3 pt-8">
             <Button
               variant="outline"
-              className="px-3 py-1 border border-gray-300 text-black rounded-lg font-semibold hover:bg-gray-100 transition"
               disabled={page === 1}
               onClick={() => setPage(page - 1)}
+              className="px-4 py-2 rounded-xl border-2 font-semibold disabled:opacity-50 hover:bg-accent transition-all duration-300"
             >
               Previous
             </Button>
-            {/* Page numbers with ellipsis */}
-            {(() => {
-              const pageButtons = [];
-              const showLeftEllipsis = page > 3;
-              const showRightEllipsis = page < totalPages - 2;
-              const startPage = Math.max(2, page - 1);
-              const endPage = Math.min(totalPages - 1, page + 1);
+            <div className="flex items-center gap-2">
+              {(() => {
+                const pageButtons = [];
+                const showLeftEllipsis = page > 3;
+                const showRightEllipsis = page < totalPages - 2;
+                const startPage = Math.max(2, page - 1);
+                const endPage = Math.min(totalPages - 1, page + 1);
 
-              // Always show first page
-              pageButtons.push(
-                <Button
-                  key={1}
-                  variant={page === 1 ? 'default' : 'outline'}
-                  className={`px-3 py-1 border border-gray-300 text-black rounded-lg font-semibold ${page === 1 ? 'bg-black text-white' : 'hover:bg-gray-100 transition'}`}
-                  onClick={() => setPage(1)}
-                >
-                  1
-                </Button>
-              );
-
-              if (showLeftEllipsis) {
+                // First page
                 pageButtons.push(
-                  <span key="left-ellipsis" className="px-2 select-none">...</span>
+                  <Button
+                    key={1}
+                    variant={page === 1 ? 'default' : 'outline'}
+                    className={`w-12 h-12 rounded-xl border-2 font-semibold transition-all duration-300 ${
+                      page === 1 
+                        ? 'gradient-wellness text-white shadow-medium' 
+                        : 'hover:bg-accent'
+                    }`}
+                    onClick={() => setPage(1)}
+                  >
+                    1
+                  </Button>
                 );
-              }
 
-              for (let i = startPage; i <= endPage; i++) {
-                if (i > 1 && i < totalPages) {
+                if (showLeftEllipsis) {
+                  pageButtons.push(
+                    <span key="left-ellipsis" className="px-2 text-muted-foreground">...</span>
+                  );
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                  if (i > 1 && i < totalPages) {
+                    pageButtons.push(
+                      <Button
+                        key={i}
+                        variant={page === i ? 'default' : 'outline'}
+                        className={`w-12 h-12 rounded-xl border-2 font-semibold transition-all duration-300 ${
+                          page === i 
+                            ? 'gradient-wellness text-white shadow-medium' 
+                            : 'hover:bg-accent'
+                        }`}
+                        onClick={() => setPage(i)}
+                      >
+                        {i}
+                      </Button>
+                    );
+                  }
+                }
+
+                if (showRightEllipsis) {
+                  pageButtons.push(
+                    <span key="right-ellipsis" className="px-2 text-muted-foreground">...</span>
+                  );
+                }
+
+                // Last page
+                if (totalPages > 1) {
                   pageButtons.push(
                     <Button
-                      key={i}
-                      variant={page === i ? 'default' : 'outline'}
-                      className={`px-3 py-1 border border-gray-300 text-black rounded-lg font-semibold ${page === i ? 'bg-black text-white' : 'hover:bg-gray-100 transition'}`}
-                      onClick={() => setPage(i)}
+                      key={totalPages}
+                      variant={page === totalPages ? 'default' : 'outline'}
+                      className={`w-12 h-12 rounded-xl border-2 font-semibold transition-all duration-300 ${
+                        page === totalPages 
+                          ? 'gradient-wellness text-white shadow-medium' 
+                          : 'hover:bg-accent'
+                      }`}
+                      onClick={() => setPage(totalPages)}
                     >
-                      {i}
+                      {totalPages}
                     </Button>
                   );
                 }
-              }
 
-              if (showRightEllipsis) {
-                pageButtons.push(
-                  <span key="right-ellipsis" className="px-2 select-none">...</span>
-                );
-              }
-
-              // Always show last page
-              if (totalPages > 1) {
-                pageButtons.push(
-                  <Button
-                    key={totalPages}
-                    variant={page === totalPages ? 'default' : 'outline'}
-                    className={`px-3 py-1 border border-gray-300 text-black rounded-lg font-semibold ${page === totalPages ? 'bg-black text-white' : 'hover:bg-gray-100 transition'}`}
-                    onClick={() => setPage(totalPages)}
-                  >
-                    {totalPages}
-                  </Button>
-                );
-              }
-
-              return pageButtons;
-            })()}
+                return pageButtons;
+              })()}
+            </div>
+            <Button
+              variant="outline"
+              disabled={page === totalPages}
+              onClick={() => setPage(page + 1)}
+              className="px-4 py-2 rounded-xl border-2 font-semibold disabled:opacity-50 hover:bg-accent transition-all duration-300"
+            >
+              Next
+            </Button>
           </div>
         )}
       </div>
