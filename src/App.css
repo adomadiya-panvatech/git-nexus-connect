@@ -33,6 +33,10 @@
   }
 }
 
+.max-panva-w-9xl {
+  max-width: 120rem !important;
+}
+
 .card {
   padding: 2em;
 }
